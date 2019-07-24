@@ -6,33 +6,40 @@
     <title>
         Title
     </title>
-    <script type="text/javascript" src="javascript/jquery-3.4.1.min.js"></script> 
-    <script type="text/javascript" src="javascript/knockout-3.5.0.js"></script> 
+    <script type="text/javascript" src="javascript/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="javascript/knockout-3.5.0.js"></script>
     <script type="text/javascript" src="javascript/addressbook.js"></script>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 </head>
 
 <body>
-    <p>Name:
-        <input type="text" data-bind="value: AddressBook.contact.name"/>
-    </p>
-    <p>Phone Number:
-        <input type="text" data-bind="value: AddressBook.contact.phoneNumber"/>
-    </p>
-    <p><button data-bind="click: AddressBook.addContact">Add</button></p>
+    <div class="container">
+        <div class="page-header">
+            <h1>My Address Book</h1>
+        </div>
+        <p>
+            Name:<input type="text" data-bind="value: AddressBook.contact.name" />
+            Phone Number:<input type="text" data-bind="value: AddressBook.contact.phoneNumber" />
+        </p>
+        <p><button data-bind="click: AddressBook.addContact" class="btn btn-primary">Add</button></p>
+        <table class="table">
+            <thead>
+                <th>Name</th>
+                <th>Phone Number</th>
+            </thead>
+
+            <tbody data-bind="foreach: AddressBook.contacts">
+                <tr>
+                    <td data-bind="text: name"></td>
+                    <td data-bind="text: phoneNumber"></td>
+                    <td><a href="#" data-bind="click: AddressBook.removeContact">Remove</a></td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </body>
 
-<table>
-    <thead>
-        <th>Name</th>
-        <th>Phone Number</th>
-    </thead>
 
-    <tbody data-bind="foreach: AddressBook.contacts">
-        <tr>
-            <td data-bind="text: name"></td>
-            <td data-bind="text: phoneNumber"></td>
-        </tr>
-    </tbody>
-</table>
 
 </html>

@@ -26,9 +26,14 @@ var AddressBook = function(){
         contact.name(null);
         contact.phoneNumber(null)
     }
+
+    var removeContact=function(contact){
+        contacts.remove(contact);
+    }
     return {
         contact: contact,
         addContact: addContact,
+        removeContact: removeContact,
         contacts: contacts
     };
 }();
